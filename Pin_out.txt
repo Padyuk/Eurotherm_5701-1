@@ -1,0 +1,4 @@
+PC0->Opto_OUT
+PD1->Encoder_B
+PD2->Encoder_A
+use clk quartz 18.432mhz for 18.432/40=460,8Khz

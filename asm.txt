@@ -1,0 +1,128 @@
+---- UNKNOWN_FILE ---------------------------------------------------------------------------------
+0: File not found
++00000000:   940C0034    JMP       0x00000034     Jump
++00000002:   940C003E    JMP       0x0000003E     Jump
++00000004:   940C003E    JMP       0x0000003E     Jump
++00000006:   940C003E    JMP       0x0000003E     Jump
++00000008:   940C003E    JMP       0x0000003E     Jump
++0000000A:   940C003E    JMP       0x0000003E     Jump
++0000000C:   940C003E    JMP       0x0000003E     Jump
++0000000E:   940C003E    JMP       0x0000003E     Jump
++00000010:   940C003E    JMP       0x0000003E     Jump
++00000012:   940C003E    JMP       0x0000003E     Jump
++00000014:   940C003E    JMP       0x0000003E     Jump
++00000016:   940C003E    JMP       0x0000003E     Jump
++00000018:   940C003E    JMP       0x0000003E     Jump
++0000001A:   940C003E    JMP       0x0000003E     Jump
++0000001C:   940C003E    JMP       0x0000003E     Jump
++0000001E:   940C003E    JMP       0x0000003E     Jump
++00000020:   940C003E    JMP       0x0000003E     Jump
++00000022:   940C003E    JMP       0x0000003E     Jump
++00000024:   940C003E    JMP       0x0000003E     Jump
++00000026:   940C003E    JMP       0x0000003E     Jump
++00000028:   940C003E    JMP       0x0000003E     Jump
++0000002A:   940C003E    JMP       0x0000003E     Jump
++0000002C:   940C003E    JMP       0x0000003E     Jump
++0000002E:   940C003E    JMP       0x0000003E     Jump
++00000030:   940C003E    JMP       0x0000003E     Jump
++00000032:   940C003E    JMP       0x0000003E     Jump
++00000034:   2411        CLR       R1             Clear Register
++00000035:   BE1F        OUT       0x3F,R1        Out to I/O location
++00000036:   EFCF        SER       R28            Set Register
++00000037:   E0D8        LDI       R29,0x08       Load immediate
++00000038:   BFDE        OUT       0x3E,R29       Out to I/O location
++00000039:   BFCD        OUT       0x3D,R28       Out to I/O location
++0000003A:   940E0040    CALL      0x00000040     Call subroutine
++0000003C:   940C006E    JMP       0x0000006E     Jump
++0000003E:   940C0000    JMP       0x00000000     Jump
+@00000040: main
+---- Coder_Euroterm_328.c -------------------------------------------------------------------------
+4:        {
++00000040:   B818        OUT       0x08,R1        Out to I/O location
+8:         DDRC=0x01;
++00000041:   E081        LDI       R24,0x01       Load immediate
++00000042:   B987        OUT       0x07,R24       Out to I/O location
+11:        DDRD=0x00;
++00000043:   B81A        OUT       0x0A,R1        Out to I/O location
+12:        PORTD=0x06;
++00000044:   E086        LDI       R24,0x06       Load immediate
++00000045:   B98B        OUT       0x0B,R24       Out to I/O location
+21:       	PORTC=0x01;  //16
++00000046:   E091        LDI       R25,0x01       Load immediate
+16:       	A=PIND;
++00000047:   B189        IN        R24,0x09       In from I/O location
+17:           A=A&0x06;
++00000048:   7086        ANDI      R24,0x06       Logical AND with immediate
+18:       	A=A|0x01;
++00000049:   6081        ORI       R24,0x01       Logical OR with immediate
+21:       	PORTC=0x01;  //16
++0000004A:   B998        OUT       0x08,R25       Out to I/O location
+23:       	asm("nop");
++0000004B:   0000        NOP                      No operation
+24:       	asm("nop");
++0000004C:   0000        NOP                      No operation
+25:       	asm("nop");
++0000004D:   0000        NOP                      No operation
+26:       	asm("nop");
++0000004E:   0000        NOP                      No operation
+29:           if(A==0x01)
++0000004F:   3081        CPI       R24,0x01       Compare with immediate
++00000050:   F409        BRNE      PC+0x02        Branch if not equal
+30:       	{PORTC=0x00;}
++00000051:   B818        OUT       0x08,R1        Out to I/O location
+31:        	asm("nop");
++00000052:   0000        NOP                      No operation
+32:       	asm("nop");   //33
++00000053:   0000        NOP                      No operation
+33:       	asm("nop");
++00000054:   0000        NOP                      No operation
+36:           if(A==0x03)
++00000055:   3083        CPI       R24,0x03       Compare with immediate
++00000056:   F409        BRNE      PC+0x02        Branch if not equal
+37:       	{PORTC=0x00;}
++00000057:   B818        OUT       0x08,R1        Out to I/O location
+38:        	asm("nop");
++00000058:   0000        NOP                      No operation
+39:       	asm("nop");
++00000059:   0000        NOP                      No operation
+40:       	asm("nop");   //50
++0000005A:   0000        NOP                      No operation
+41:       	asm("nop");
++0000005B:   0000        NOP                      No operation
+45:           if(A==0x05)
++0000005C:   3085        CPI       R24,0x05       Compare with immediate
++0000005D:   F409        BRNE      PC+0x02        Branch if not equal
+46:       	{PORTC=0x00;}
++0000005E:   B818        OUT       0x08,R1        Out to I/O location
+47:        	asm("nop");
++0000005F:   0000        NOP                      No operation
+48:        	asm("nop");   //66
++00000060:   0000        NOP                      No operation
+49:        	asm("nop");
++00000061:   0000        NOP                      No operation
+52:           if(A==0x07)
++00000062:   3087        CPI       R24,0x07       Compare with immediate
++00000063:   F409        BRNE      PC+0x02        Branch if not equal
+53:       	{PORTC=0x00;}
++00000064:   B818        OUT       0x08,R1        Out to I/O location
+54:       	asm("nop");   //free
++00000065:   0000        NOP                      No operation
+55:       	asm("nop");
++00000066:   0000        NOP                      No operation
+56:       	asm("nop");
++00000067:   0000        NOP                      No operation
+57:        	asm("nop");
++00000068:   0000        NOP                      No operation
+58:       	asm("nop");
++00000069:   0000        NOP                      No operation
+59:       	asm("nop");
++0000006A:   0000        NOP                      No operation
+60:       	asm("nop");
++0000006B:   0000        NOP                      No operation
+61:       	asm("nop");
++0000006C:   0000        NOP                      No operation
+76:        }
++0000006D:   CFD9        RJMP      PC-0x0026      Relative jump
+76:        }
++0000006E:   94F8        CLI                      Global Interrupt Disable
++0000006F:   CFFF        RJMP      PC-0x0000      Relative jump
