@@ -1,3 +1,4 @@
+Atmega 328P
 PC0->Opto_OUT
 PD1->Encoder_B
 PD2->Encoder_A
